@@ -1,0 +1,26 @@
+<resources>
+    <string name="app_name">DeviceOrientationService</string>
+    <string name="device_orientation_service_notification_title">DeviceOrientationService</string>
+    <string name="device_orientation_service_notification_text">A service that allow to force device orientation globally.</string>
+    <string name="device_orientation_service_notification_tickle">DeviceOrientationService</string>
+    <string name="serviceStopped">Service is stopped</string>
+    <string name="serviceStarted">Service is running</string>
+    <string name="startOnBoot">Start on boot</string>
+    <string name="doNothingOnBoot">Do nothing on boot</string>
+    <string name="startOnCharging">Start when charging \nStop when not charging</string>
+    <string name="doNothingOnCharging">Power events not\nmonitored</string>
+    <string name="deviceorientationservice_channel_name">Device Orientation Service</string>
+    <string name="deviceorientationservice_channel_id">Device Orientation Service channel</string>
+    <string name="appdescription">The Device Orientation Service will allow user to force device orientation globally.\nService can be started with adb:\nadb shell am broadcast -a com.zebra.deviceorientationservice.startservice\nService can be stopped with adb:\nadb shell am broadcast -a com.zebra.deviceorientationservice.stopservice</string>
+    <string name="powereventswatcherservice_channel_name">Device Orientation Service</string>
+    <string name="powereventswatcherservice_channel_id">Device Orientation Service channel</string>
+    <string name="powereventswatcherservice_notification_title">Device Orientation Service Power Events Watcher</string>
+    <string name="powereventswatcherservice_notification_text">A service that watch for power events (docked, charging) to start or stop Device Orientation Service.</string>
+    <string name="powereventswatcherservice_notification_tickle">Device Orientation Service Power Events Watcher</string>
+    <string-array name="orientation_modes">
+        <item>disabled</item>
+        <item>landscape</item>
+        <item>portrait</item>
+        <item>reverse_landscape</item>
+    </string-array>
+</resources>
