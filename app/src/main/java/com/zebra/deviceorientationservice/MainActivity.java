@@ -43,7 +43,7 @@ import android.widget.Toast;
 //      adb shell am broadcast -a com.zebra.deviceorientationservice.stopservice -n com.zebra.deviceorientationservice/com.zebra.deviceorientationservice.StopServiceBroadcastReceiver
 //  - Setup service
 //          The service can be configured using the following intent:
-//          adb shell am broadcast -a com.zebra.deviceorientationservice.setupservice -n com.zebra.deviceorientationservice/com.zebra.deviceorientationservice.SetupServiceBroadcastReceiver --es startonboot "true" --es startoncharging "true"
+//          adb shell am broadcast -a com.zebra.deviceorientationservice.setupservice -n com.zebra.deviceorientationservice/com.zebra.deviceorientationservice.SetupServiceBroadcastReceiver --es startonboot "true" --es startoncharging "true" " --es orientation “portrait”
 //          The command must contain at least one of the extras:
 //          - Configure autostart on boot:
 //          --es startonboot "true"
