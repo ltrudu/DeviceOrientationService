@@ -1,17 +1,3 @@
-The NoSleep Service prevent the device to go on sleep mode when it is activated.
-
-The service can be launched using the graphical user interface, intent actions or adb.
-
-If the option "Start on boot" is enabled, the service will be automatically launched when the boot is complete.
-
-
-Power events occur when the device is connected to a power source (AC/USB/Wireless).
-
-If the option "Start when charging / Stop when charging" is enabled, the power events will be monitored.
-
-The NoSleepService will be launched when the device is connected to a power source.
-
-
 The service respond to two intent actions (both uses the category: android.intent.category.DEFAULT)
 
 - "deviceorientationservice.startservice" sent on the component "deviceorientationservice/deviceorientationservice.StartServiceBroadcastReceiver":

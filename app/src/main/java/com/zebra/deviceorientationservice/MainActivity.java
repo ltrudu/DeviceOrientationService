@@ -73,7 +73,6 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         ((Button)findViewById(R.id.btLicense)).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //Intent myIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://github.com/ltrudu/NoSleepService/blob/master/README.md"));
                 Intent myIntent = new Intent(MainActivity.this, LicenceActivity.class);
                 startActivity(myIntent);
             }

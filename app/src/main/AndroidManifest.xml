@@ -4,6 +4,7 @@
 
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
     <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW"/>
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE"/>
 
     <application
         android:allowBackup="true"
@@ -47,7 +48,7 @@
             android:name=".StartServiceBroadcastReceiver"
             android:enabled="true">
             <intent-filter>
-                <action android:name="com.zebra.nosleepservice.startservice" />
+                <action android:name="com.zebra.deviceorientationservice.startservice" />
 
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
@@ -56,7 +57,7 @@
             android:name=".StopServiceBroadcastReceiver"
             android:enabled="true">
             <intent-filter>
-                <action android:name="com.zebra.nosleepservice.stopservice" />
+                <action android:name="com.zebra.deviceorientationservice.stopservice" />
 
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
@@ -65,7 +66,7 @@
             android:name=".SetupServiceBroadcastReceiver"
             android:enabled="true">
             <intent-filter>
-                <action android:name="com.zebra.nosleepservice.setupservice" />
+                <action android:name="com.zebra.deviceorientationservice.setupservice" />
 
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
