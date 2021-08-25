@@ -22,5 +22,8 @@
         <item>landscape</item>
         <item>portrait</item>
         <item>reverse_landscape</item>
+        <item>full_sensor</item>
+        <item>sensor_landscape</item>
+        <item>sensor_portrait</item>
     </string-array>
 </resources>

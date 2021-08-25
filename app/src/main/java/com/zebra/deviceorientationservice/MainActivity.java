@@ -53,6 +53,15 @@ import android.widget.Toast;
 //          - Configure layout orientation
 //          --es orientation "disabled"
 //          The extras value can be set to : "disabled","landscape","portrait" or "reverse_landscape" (with double quotes)
+//  Possible values for orientation are:
+//          - disabled
+//          - landscape
+//          - portrait
+//          - reverse_landscape
+//          - full_sensor
+//          - sensor_landscape
+//          - sensor_portrait
+
 public class MainActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
     private Switch mStartStopServiceSwitch = null;
