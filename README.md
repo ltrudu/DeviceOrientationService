@@ -40,12 +40,19 @@ The service can be started and stopped manually using the following adb commands
      The extras value can be set to "true" or "1" to enable the option and "false" or "0" to disable the option.
 	 
 Possible values for orientation are:
+
        - disabled
+       
        - landscape
+       
        - portrait
+       
        - reverse_landscape
+       
        - full_sensor
+       
        - sensor_landscape
+       
        - sensor_portrait
 
 # -------------------------------------------------------
