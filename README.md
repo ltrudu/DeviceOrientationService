@@ -25,7 +25,7 @@ The service can be started and stopped manually using the following adb commands
   
  - Setup service
 
-     adb shell am broadcast -a deviceorientationservice.setupservice -n deviceorientationservice/deviceorientationservice.SetupServiceBroadcastReceiver --es startonboot "true" --es startoncharging "true"
+     adb shell am broadcast -a deviceorientationservice.setupservice -n deviceorientationservice/deviceorientationservice.SetupServiceBroadcastReceiver --es startonboot "true" --es startoncharging "true" --es orientation "portrait"
      
      The command must contain at least one of the extras:
      
@@ -38,22 +38,25 @@ The service can be started and stopped manually using the following adb commands
 		--es startoncharging "true"
 		
      The extras value can be set to "true" or "1" to enable the option and "false" or "0" to disable the option.
+     
+     - Configure current orientation:
+     		--es orientation "AnyValueChoosedInTheFollowingList"
 	 
-Possible values for orientation are:
+	Possible values for orientation are:
 
-       - disabled
+       		- disabled
        
-       - landscape
+       		- landscape
        
-       - portrait
+       		- portrait
        
-       - reverse_landscape
+       		- reverse_landscape
        
-       - full_sensor
+       		- full_sensor
        
-       - sensor_landscape
+       		- sensor_landscape
        
-       - sensor_portrait
+       		- sensor_portrait
 
 # -------------------------------------------------------
 #                   EULA License
