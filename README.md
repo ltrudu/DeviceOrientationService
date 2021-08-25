@@ -39,7 +39,7 @@ The service can be started and stopped manually using the following adb commands
 		
      The extras value can be set to "true" or "1" to enable the option and "false" or "0" to disable the option.
      
-     - Configure current orientation:
+     - Configure layout orientation:
      		--es orientation "AnyValueChoosedInTheFollowingList"
 	 
 	Possible values for orientation are:
