@@ -7,25 +7,26 @@ import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.app.Service;
+import android.app.TaskStackBuilder;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.content.res.Configuration;
 import android.graphics.PixelFormat;
 import android.net.Uri;
 import android.os.Build;
 import android.os.IBinder;
 import android.provider.Settings;
-import android.support.annotation.RequiresApi;
-import android.support.v4.app.NotificationCompat;
-import android.support.v4.app.TaskStackBuilder;
-import android.util.DisplayMetrics;
+
+
 import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 
+import androidx.annotation.RequiresApi;
+
+import static android.app.PendingIntent.FLAG_IMMUTABLE;
 import static android.app.PendingIntent.FLAG_UPDATE_CURRENT;
-import static android.support.v4.app.NotificationCompat.PRIORITY_MIN;
+import static android.app.job.JobInfo.PRIORITY_MIN;
 
 public class DeviceOrientationService extends Service {
     private static final int SERVICE_ID = 1;
@@ -79,26 +80,27 @@ public class DeviceOrientationService extends Service {
                     getApplicationContext(),
                     0,
                     mainActivityIntent,
-                    PendingIntent.FLAG_UPDATE_CURRENT);
+                    FLAG_UPDATE_CURRENT | FLAG_IMMUTABLE);
 
             // Create the Foreground Service
             String channelId = Build.VERSION.SDK_INT >= Build.VERSION_CODES.O ? createNotificationChannel(mNotificationManager) : "";
 
-            NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(this, channelId);
-            mNotification = notificationBuilder.setOngoing(true)
+            Notification.Builder notificationBuilder = new Notification.Builder(this, channelId);
+            mNotification = notificationBuilder
                     .setSmallIcon(R.mipmap.ic_launcher)
                     .setContentTitle(getString(R.string.device_orientation_service_notification_title))
                     .setContentText(getString(R.string.device_orientation_service_notification_text))
                     .setTicker(getString(R.string.device_orientation_service_notification_tickle))
-                    .setPriority(PRIORITY_MIN)
-                    .setCategory(NotificationCompat.CATEGORY_SERVICE)
+                    .setPriority(Notification.PRIORITY_MIN)
+                    .setCategory(Notification.CATEGORY_SERVICE)
                     .setContentIntent(pendingIntent)
+                    .setOngoing(true)
                     .build();
 
             TaskStackBuilder localTaskStackBuilder = TaskStackBuilder.create(this);
             localTaskStackBuilder.addParentStack(MainActivity.class);
             localTaskStackBuilder.addNextIntent(mainActivityIntent);
-            notificationBuilder.setContentIntent(localTaskStackBuilder.getPendingIntent(0, FLAG_UPDATE_CURRENT));
+            notificationBuilder.setContentIntent(localTaskStackBuilder.getPendingIntent(0, FLAG_UPDATE_CURRENT | FLAG_IMMUTABLE));
 
             // Start foreground service
             startForeground(SERVICE_ID, mNotification);
@@ -260,7 +262,7 @@ public class DeviceOrientationService extends Service {
         NotificationChannel channel = new NotificationChannel(getString(R.string.deviceorientationservice_channel_id), getString(R.string.deviceorientationservice_channel_name), NotificationManager.IMPORTANCE_HIGH);
         // omitted the LED color
         channel.setImportance(NotificationManager.IMPORTANCE_NONE);
-        channel.setLockscreenVisibility(Notification.VISIBILITY_PRIVATE);
+        channel.setLockscreenVisibility(Notification.VISIBILITY_PUBLIC);
         notificationManager.createNotificationChannel(channel);
         return getString(R.string.deviceorientationservice_channel_id);
     }

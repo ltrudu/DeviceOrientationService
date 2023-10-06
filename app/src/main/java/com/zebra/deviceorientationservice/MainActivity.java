@@ -1,14 +1,16 @@
 package com.zebra.deviceorientationservice;
 
+import android.Manifest;
 import android.bluetooth.BluetoothClass;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.BatteryManager;
 import android.os.Build;
 import android.provider.Settings;
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -73,6 +75,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     public static MainActivity mMainActivity;
 
     public static int OVERLAY_PERMISSION_CODE = 1242;
+    public static int POSTNOTIFICATIONS_PERMISSION_CODE = 515;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -162,8 +165,20 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 
         updateSwitches();
         launchPowerEventsWatcherServiceIfNecessary();
+
         if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.O)
             checkOverlayPermission();
+
+    }
+
+    private void checkPostNotificationPermission() {
+        if (checkSelfPermission(Manifest.permission.POST_NOTIFICATIONS) != PackageManager.PERMISSION_GRANTED) {
+
+            requestPermissions(new String[] {Manifest.permission.POST_NOTIFICATIONS}, POSTNOTIFICATIONS_PERMISSION_CODE);
+
+        }
+        else {
+        }
     }
 
     @Override
@@ -180,6 +195,12 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
             Intent intent = new Intent(Settings.ACTION_MANAGE_OVERLAY_PERMISSION, Uri.parse("package:" + getPackageName()));
             startActivityForResult(intent, OVERLAY_PERMISSION_CODE);
         }
+        else
+        {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+                checkPostNotificationPermission();
+            }
+        }
     }
 
     @Override
@@ -191,6 +212,14 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
                 Intent intent = new Intent(Settings.ACTION_MANAGE_OVERLAY_PERMISSION,Uri.parse("package:" + getPackageName()));
                 startActivityForResult(intent, OVERLAY_PERMISSION_CODE);
             }
+            else
+            {
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+                    checkPostNotificationPermission();
+                }
+            }
+        }
+        else if (requestCode == POSTNOTIFICATIONS_PERMISSION_CODE) {
         }
     }
 

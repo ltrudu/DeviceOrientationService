@@ -5,6 +5,7 @@
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
     <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW"/>
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE"/>
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS"/>
 
     <application
         android:allowBackup="true"
@@ -16,6 +17,7 @@
         <activity android:name=".LicenceActivity" />
         <activity
             android:name=".MainActivity"
+            android:exported="true"
             android:launchMode="singleInstance">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -34,6 +36,7 @@
             android:exported="true" />
 
         <receiver
+            android:exported="true"
             android:name=".BootCompletedBroadcastReceiver"
             android:enabled="true"
             android:permission="android.permission.RECEIVE_BOOT_COMPLETED">
@@ -45,6 +48,7 @@
             </intent-filter>
         </receiver>
         <receiver
+            android:exported="true"
             android:name=".StartServiceBroadcastReceiver"
             android:enabled="true">
             <intent-filter>
@@ -54,6 +58,7 @@
             </intent-filter>
         </receiver>
         <receiver
+            android:exported="true"
             android:name=".StopServiceBroadcastReceiver"
             android:enabled="true">
             <intent-filter>
@@ -63,6 +68,7 @@
             </intent-filter>
         </receiver>
         <receiver
+            android:exported="true"
             android:name=".SetupServiceBroadcastReceiver"
             android:enabled="true">
             <intent-filter>
@@ -72,6 +78,7 @@
             </intent-filter>
         </receiver> <!-- Register PowerConnectionReceiver in AndroidManifest for build < Oreo -->
         <receiver
+            android:exported="true"
             android:name=".PowerConnectionReceiver"
             android:enabled="true">
             <intent-filter>
