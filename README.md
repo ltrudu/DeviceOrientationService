@@ -1,3 +1,6 @@
+*Please be aware that this library / application / sample is provided as a community project without any guarantee of support*
+=========================================================
+
 The service respond to two intent actions (both uses the category: android.intent.category.DEFAULT)
 
 - "deviceorientationservice.startservice" sent on the component "deviceorientationservice/deviceorientationservice.StartServiceBroadcastReceiver":
