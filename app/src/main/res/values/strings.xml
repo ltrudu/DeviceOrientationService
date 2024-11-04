@@ -1,5 +1,7 @@
 <resources>
     <string name="app_name">DeviceOrientationService</string>
+    <string name="app_title">DeviceOrientationService</string>
+    <string name="loading_status">Loading Application</string>
     <string name="device_orientation_service_notification_title">DeviceOrientationService</string>
     <string name="device_orientation_service_notification_text">A service that allow to force device orientation globally.</string>
     <string name="device_orientation_service_notification_tickle">DeviceOrientationService</string>

@@ -23,3 +23,4 @@
 #-dontusemixedcaseclassnames
 -dontskipnonpubliclibraryclasses
 -verbose
+-ignorewarnings
