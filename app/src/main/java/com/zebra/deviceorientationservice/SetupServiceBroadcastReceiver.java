@@ -51,7 +51,7 @@ public class SetupServiceBroadcastReceiver extends BroadcastReceiver {
         if(sStartOnCharging != null)
         {
             Log.d(Constants.TAG, "SetupServiceBroadcastReceiver::onReceive:Start on charging extra found with value:" + sStartOnCharging);
-            boolean bStartOnCharging = sStartOnCharging.equalsIgnoreCase("true") || sStartOnBoot.equalsIgnoreCase("1");
+            boolean bStartOnCharging = sStartOnCharging.equalsIgnoreCase("true") || sStartOnCharging.equalsIgnoreCase("1");
             setSharedPreference(context, Constants.SHARED_PREFERENCES_START_SERVICE_ON_CHARGING, bStartOnCharging);
             // Launch service if necessary
             if(bStartOnCharging)
@@ -70,6 +70,26 @@ public class SetupServiceBroadcastReceiver extends BroadcastReceiver {
         else
         {
             Log.d(Constants.TAG, "SetupServiceBroadcastReceiver::onReceive:No start on charging extra found.");
+        }
+
+        String autoStart = intent.getStringExtra(Constants.EXTRA_CONFIGURATION_AUTOSTART);
+        if(autoStart != null)
+        {
+            Log.d(Constants.TAG, "SetupServiceBroadcastReceiver::onReceive:Start on charging extra found with value:" + autoStart);
+            boolean bAutoStart = autoStart.equalsIgnoreCase("true") || autoStart.equalsIgnoreCase("1");
+            setSharedPreference(context, Constants.SHARED_PREFERENCES_AUTOSTART, bAutoStart);
+            // Launch service if necessary
+            if(bAutoStart)
+            {
+                if(!DeviceOrientationService.isRunning(context))
+                    DeviceOrientationService.startService(context);
+            }
+            // Update GUI if necessary
+            MainActivity.updateGUISwitchesIfNecessary();
+        }
+        else
+        {
+            Log.d(Constants.TAG, "SplashActivity::onCreate:No autostart extra found.");
         }
     }
 
