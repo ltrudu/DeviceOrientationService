@@ -18,6 +18,7 @@ import android.os.IBinder;
 import android.provider.Settings;
 
 
+import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
