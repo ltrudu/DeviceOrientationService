@@ -103,14 +103,13 @@ public class DeviceOrientationService extends Service {
             localTaskStackBuilder.addNextIntent(mainActivityIntent);
             notificationBuilder.setContentIntent(localTaskStackBuilder.getPendingIntent(0, FLAG_UPDATE_CURRENT | FLAG_IMMUTABLE));
 
-            // Start foreground service
-            startForeground(SERVICE_ID, mNotification);
-
-            // Do your service stuffs here :)
-
+            // Setup overlay window before starting the service to be A15 compliant
             E_ORIENTATION targetOrientation = getOrientationSharedPreferences(this);
             Log.d(Constants.TAG, "Setting orientation to:" + targetOrientation.toString());
             setOrientation(this.getApplicationContext(), targetOrientation);
+
+            // Start foreground service
+            startForeground(SERVICE_ID, mNotification);
 
             logD("startService:Service started without error.");
         }

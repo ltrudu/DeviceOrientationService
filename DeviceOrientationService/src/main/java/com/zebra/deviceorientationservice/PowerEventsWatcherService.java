@@ -17,6 +17,7 @@ import androidx.core.app.NotificationCompat;
 import androidx.core.app.TaskStackBuilder;
 import android.util.Log;
 
+import static android.app.PendingIntent.FLAG_IMMUTABLE;
 import static android.app.PendingIntent.FLAG_UPDATE_CURRENT;
 import static androidx.core.app.NotificationCompat.PRIORITY_MIN;
 
@@ -71,7 +72,7 @@ public class PowerEventsWatcherService extends Service {
                     getApplicationContext(),
                     0,
                     mainActivityIntent,
-                    PendingIntent.FLAG_UPDATE_CURRENT);
+                    PendingIntent.FLAG_UPDATE_CURRENT | FLAG_IMMUTABLE);
 
             // Create the Foreground Service
             NotificationManager notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
@@ -91,7 +92,7 @@ public class PowerEventsWatcherService extends Service {
             TaskStackBuilder localTaskStackBuilder = TaskStackBuilder.create(this);
             localTaskStackBuilder.addParentStack(MainActivity.class);
             localTaskStackBuilder.addNextIntent(mainActivityIntent);
-            notificationBuilder.setContentIntent(localTaskStackBuilder.getPendingIntent(0, FLAG_UPDATE_CURRENT));
+            notificationBuilder.setContentIntent(localTaskStackBuilder.getPendingIntent(0, FLAG_UPDATE_CURRENT | FLAG_IMMUTABLE));
 
             // Start foreground service
             startForeground(SERVICE_ID, mNotification);

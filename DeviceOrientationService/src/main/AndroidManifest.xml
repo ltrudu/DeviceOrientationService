@@ -7,6 +7,7 @@
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE"/>
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS"/>
     <uses-permission android:name="com.symbol.emdk.permission.EMDK" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_SPECIAL_USE"/>
 
     <queries>
         <package android:name="com.symbol.emdk.emdkservice" />
@@ -40,11 +41,13 @@
         <service
             android:name=".DeviceOrientationService"
             android:enabled="true"
-            android:exported="true" />
+            android:exported="true"
+            android:foregroundServiceType="specialUse"/>
         <service
             android:name=".PowerEventsWatcherService"
             android:enabled="true"
-            android:exported="true" />
+            android:exported="true"
+            android:foregroundServiceType="specialUse"/>
 
         <receiver
             android:exported="true"

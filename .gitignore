@@ -33,3 +33,5 @@ google-services.json
 *.hprof
 app/debug/
 app/release/
+DeviceOrientationService/debug/
+DeviceOrientationService/release/
